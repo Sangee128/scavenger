@@ -24,12 +24,15 @@
     <input type="text" id="finalAnswer" placeholder="Enter the final word">
     <button onclick="checkFinalAnswer()">Submit</button>
     <p id="winnerMessage" class="hidden">You're a winner! 🎉</p>
+    <img id="winnerMessage1" class="hidden" src="go.jpg" height="250px" width="250px">
+
 
     <script>
         function checkFinalAnswer() {
             var finalAnswer = document.getElementById("finalAnswer").value.trim().toUpperCase();
             if(finalAnswer === "GOAT") {
                 document.getElementById("winnerMessage").classList.remove("hidden");
+                 document.getElementById("winnerMessage1").classList.remove("hidden");
             }
         }
         function ls(){
