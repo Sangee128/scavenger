@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scavenger Hunt</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+        }
+        .hidden {
+            display: none;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        #clue1 {
+            margin-top: 20px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+        #feedback {
+            margin-top: 10px;
+            font-size: 16px;
+            color: red; /* Red color for incorrect answers */
+        }
+    </style>
+</head>
+<body>
+    <h1>Tech Scavenger Hunt - Question 1</h1>
+    <p>Which of the following is a programming language?</p>
+    <form id="mcq-form">
+        <input type="radio" name="answer" value="1"> HTML<br>
+        <input type="radio" name="answer" value="2"> CSS<br>
+        <input type="radio" name="answer" value="3"> JavaScript<br>
+        <input type="radio" name="answer" value="4"> HTTP<br>
+        <br>
+        <button type="button" onclick="checkMCQ()">Submit</button>
+    </form>
+    <p id="clue1" class="hidden"><br><br>Correct! Your first clue is "THALA FOR A REASON" (GUESS THE NUMBER AND THEN ALPHABET). <br>Go to the next page: <a href="question2.html"><button>next</button></a></p>
+    <p id="feedback"></p> <!-- Feedback message -->
+<br>
+   
+
+    <script>
+        function checkMCQ() {
+            var form = document.getElementById("mcq-form");
+            var selectedAnswer = form.querySelector('input[name="answer"]:checked');
+            var feedback = document.getElementById("feedback");
+
+            if (selectedAnswer && selectedAnswer.value == "3") {
+                document.getElementById("clue1").classList.remove("hidden");
+                feedback.textContent = ''; // Clear feedback if the answer is correct
+            } else {
+                feedback.textContent = 'Incorrect answer. Please try again.'; // Provide feedback for incorrect answer
+            }
+        }
+    </script>
+</body>
+</html>

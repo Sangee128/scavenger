@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scavenger Hunt - Final Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+        }
+        .hidden {
+            display: none;
+        }
+        
+    </style>
+</head>
+<body>
+    <h1>Congratulations! You've reached the final challenge!</h1>
+    <p>Enter the final word (Hint: Combine the clues you gathered):</p>
+    <button onclick="ls()">Last clue</button>
+    <p id="last" class="hidden">That is a movie that gonna release on sept 5</p>
+    <input type="text" id="finalAnswer" placeholder="Enter the final word">
+    <button onclick="checkFinalAnswer()">Submit</button>
+    <p id="winnerMessage" class="hidden">You're a winner! 🎉</p>
+
+    <script>
+        function checkFinalAnswer() {
+            var finalAnswer = document.getElementById("finalAnswer").value.trim().toUpperCase();
+            if(finalAnswer === "GOAT") {
+                document.getElementById("winnerMessage").classList.remove("hidden");
+            }
+        }
+        function ls(){
+            document.getElementById("last").classList.remove("hidden");
+        }
+    </script>
+</body>
+</html>

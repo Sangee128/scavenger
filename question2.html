@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scavenger Hunt - Question 2</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+        }
+        input[type="text"] {
+            padding: 5px;
+            font-size: 16px;
+            margin-top: 10px;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        #clue2 {
+            margin-top: 20px;
+            font-size: 18px;
+            font-weight: bold;
+            display: none; /* Initially hidden */
+        }
+        #clue2 a {
+            text-decoration: none;
+            color: #0066cc;
+        }
+        #clue2 a:hover {
+            text-decoration: underline;
+        }
+        #feedback {
+            margin-top: 10px;
+            font-size: 16px;
+            color: red; /* Red color for incorrect answers */
+        }
+    </style>
+</head>
+<body>
+    <h1>Tech Scavenger Hunt - Question 2</h1>
+    <p>Fill in the blank: The command used to print something to the console in JavaScript is <input type="text" id="answer" placeholder="your answer here"></p>
+    <button onclick="checkAnswer()">Submit</button>
+    <p id="clue2" class="hidden">Correct! Your next clue is "Independence of India (d) think what d means".<br> Go to the next page: <a href="question3.html"><button>next</button></a></p>
+    <p id="feedback"></p> <!-- Feedback message -->
+
+    <script>
+        function checkAnswer() {
+            var answer = document.getElementById("answer").value.trim().toLowerCase();
+            var feedback = document.getElementById("feedback");
+
+            if (answer === "console.log") {
+                document.getElementById("clue2").style.display = 'block';
+                feedback.textContent = ''; // Clear feedback if the answer is correct
+            } else {
+                feedback.textContent = 'Incorrect answer. Please try again.'; // Provide feedback for incorrect answer
+            }
+        }
+    </script>
+</body>
+</html>

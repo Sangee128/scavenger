@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scavenger Hunt - Question 3</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/codemirror.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+        }
+        #editor {
+            height: 150px;
+            border: 1px solid #ddd;
+            margin: 20px auto;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        #output {
+            margin-top: 20px;
+            font-size: 18px;
+            font-weight: bold;
+            white-space: pre-wrap; /* Preserve whitespace formatting */
+        }
+        #clue3 {
+            margin-top: 20px;
+            font-size: 18px;
+            font-weight: bold;
+            display: none; /* Initially hidden */
+        }
+    </style>
+</head>
+<body>
+    <h1>Tech Scavenger Hunt - Question 3</h1>
+    <p>Complete the function to return the sum of two numbers:</p>
+    <textarea id="code">
+function sum(a, b) {
+  // Write here
+}
+console.log(sum(2, 3));
+    </textarea>
+   
+    <button onclick="runCode()">Run Code</button>
+    <pre id="output"></pre>
+    <p id="clue3">Correct! Your final clue is solve the equation ((10 % 6) + (2 * 2) - 3) % 4<a href="final.html">next</a></p>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/codemirror.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/mode/javascript/javascript.min.js"></script>
+
+    <script>
+        // Initialize CodeMirror editor
+        const editor = CodeMirror.fromTextArea(document.getElementById("code"), {
+            lineNumbers: false,
+            mode: "javascript"
+        });
+
+        // Function to run the code in the editor
+        function runCode() {
+            const code = editor.getValue();
+            const output = document.getElementById("output");
+            
+            try {
+                // Redirect console.log output to the output box
+                let consoleOutput = '';
+                const originalLog = console.log;
+                console.log = function (message) {
+                    consoleOutput += message + '\n';
+                };
+                
+                // Execute the code
+                new Function(code)();
+                
+                // Restore original console.log and display the output
+                console.log = originalLog;
+                output.textContent = consoleOutput || 'Code executed successfully, but no output.';
+                
+                // Check if the output is correct
+                if (consoleOutput.trim() === '5') {
+                    document.getElementById("clue3").style.display = 'block';
+                }
+            } catch (e) {
+                output.textContent = "Error: " + e.message;
+            }
+        }
+    </script>
+</body>
+</html>
